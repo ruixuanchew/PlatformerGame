@@ -9,7 +9,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
-		config.setTitle("PlatformProject");
-		new Lwjgl3Application(new PlatformProject(), config);
+		config.setTitle("Test123");
+		new Lwjgl3Application(new GameMaster(), config);
 	}
 }
