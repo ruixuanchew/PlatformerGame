@@ -8,14 +8,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 import inputOutputManager.InputOutputManager;
+import sceneManager.SceneManager;
 
 public class GameMaster extends Game {
     private InputOutputManager ioManager;
+    private SceneManager sceneManager;
 
     @Override
     public void create() {
         ioManager = new InputOutputManager();
-       
+        sceneManager = new SceneManager(this);
+		sceneManager.showStartScene();
     }
 
     @Override
@@ -24,5 +27,9 @@ public class GameMaster extends Game {
         ioManager.getMap().render();
         ioManager.getSoundPlayer();
     }
+    @Override
+	 public void dispose() {
+	     sceneManager.dispose();
+	 }
 
 }
