@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -45,6 +46,7 @@ public abstract class BaseScene extends ScreenAdapter {
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
     }
 
     @Override
@@ -67,20 +69,17 @@ public abstract class BaseScene extends ScreenAdapter {
                 action.run();
             }
         });
-        button.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Hand);
-				
-			}
+        button.addListener(new InputListener() {
+        	 @Override
+             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                 Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Hand);
+             }
+        	 @Override
+             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                 Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
+             }
         });
-        button.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
-            }
-        });
-
+  
         stage.addActor(button);
     }
 }
