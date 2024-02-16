@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class EndScene extends BaseScene{
-	public EndScene(SceneManager sceneManager) {
+	protected EndScene(SceneManager sceneManager) {
 		super(sceneManager);
 		addButton("Back", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2,
 	            () -> sceneManager.showStartScene());

@@ -3,9 +3,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 public class StartScene extends BaseScene{
-	public StartScene(SceneManager sceneManager) {
+	protected StartScene(SceneManager sceneManager) {
 		super(sceneManager);
- 
+
 		addButton("Start", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2,
 	            () -> sceneManager.showGameScene());
     }

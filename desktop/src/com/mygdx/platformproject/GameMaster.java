@@ -15,16 +15,12 @@ public class GameMaster extends Game {
 	private SceneManager sceneManager;
 	private PlayerControllerManager pcManager;
 	private ShapeRenderer shape;
-
 	private EntityManager em;
 
 	@Override
 	public void create() {
 		ioManager = new InputOutputManager();
-		sceneManager = new SceneManager(this);
-		sceneManager.showStartScene();
 		shape = new ShapeRenderer();
-
 		em = new EntityManager();
 
 		// add the entities into an array
@@ -33,6 +29,11 @@ public class GameMaster extends Game {
 
 		// Initialize the PlayerControllerManager
 		pcManager = new PlayerControllerManager(em);
+		
+		// Initialize SceneManager with game and entities
+		sceneManager = new SceneManager(this, em);
+		// Start with start scene
+		sceneManager.showStartScene();
 
 	}
 
@@ -42,10 +43,10 @@ public class GameMaster extends Game {
 		ioManager.Map().render();
 		ioManager.backgroundMusic();
 
-		shape.begin(ShapeRenderer.ShapeType.Filled); // Add the shape type before drawing the shape
-
-		em.draw(shape);
-		shape.end();
+//		shape.begin(ShapeRenderer.ShapeType.Filled); // Add the shape type before drawing the shape
+//
+//		em.draw(shape);
+//		shape.end();
 
 		pcManager.move();
 	}

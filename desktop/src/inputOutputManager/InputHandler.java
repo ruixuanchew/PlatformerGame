@@ -20,6 +20,8 @@ public class InputHandler {
     public boolean SpaceKey() {
         return Gdx.input.isKeyPressed(Keys.SPACE);
     }
+    
+    // Handle buttons from sceneManager
     public void handleButtonEvents(TextButton button, Runnable onClick) {
         button.addListener(new InputListener() {
             @Override
