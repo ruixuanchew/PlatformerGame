@@ -16,11 +16,7 @@ public class Map {
 	    private TiledMap map;
 	    private OrthographicCamera camera;
 	    public Map() {
-	        map = new TmxMapLoader().load("level1.tmx");
-	        camera = new OrthographicCamera();
-	        camera.setToOrtho(false, 30, 30);
-	        camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
-	        camera.update();
+
 	    }
 
 	    public void render() {

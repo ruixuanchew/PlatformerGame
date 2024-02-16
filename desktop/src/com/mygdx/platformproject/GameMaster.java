@@ -24,8 +24,8 @@ public class GameMaster extends Game {
     @Override
     public void render() {
         super.render();
-        ioManager.getMap().render();
-        ioManager.getSoundPlayer();
+        ioManager.Map().render();
+        ioManager.backgroundMusic();
     }
     @Override
 	 public void dispose() {
