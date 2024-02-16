@@ -14,14 +14,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import inputOutputManager.InputHandler;
 
 public abstract class BaseScene extends ScreenAdapter {
     protected SceneManager sceneManager;
     protected Stage stage;
+    protected InputHandler inputHandler;
 
     public BaseScene(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
         stage = new Stage();
+        inputHandler = new InputHandler();
     }
 
     @Override
@@ -63,23 +66,8 @@ public abstract class BaseScene extends ScreenAdapter {
 
         TextButton button = new TextButton(text, buttonStyle);
         button.setPosition(x, y);
-        button.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                action.run();
-            }
-        });
-        button.addListener(new InputListener() {
-        	 @Override
-             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                 Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Hand);
-             }
-        	 @Override
-             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                 Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
-             }
-        });
-  
+        inputHandler.handleButtonEvents(button, action); // Pass the Runnable action
+
         stage.addActor(button);
     }
 }
