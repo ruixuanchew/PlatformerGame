@@ -2,23 +2,31 @@ package playerController;
 
 import com.badlogic.gdx.Gdx;
 
+import EntityManager.Entity;
+import EntityManager.EntityManager;
 import inputOutputManager.InputHandler;
 
 public class PlayerControllerManager {
 	private InputHandler movement;
-	private entitytest entity;
+	// private List<Entity> entityList = new ArrayList<>();
+	private EntityManager entities;
 
-	public PlayerControllerManager(entitytest entity) {
-		this.entity = entity; // Initialize the entity variable
+	public PlayerControllerManager(EntityManager em) {
+		this.entities = em; // Initialize the entity variable
 		movement = new InputHandler(); // Initialize the movement variable
 	}
 
 	public void move() {
-		if (movement.LeftKey()) {
-			entity.setX(entity.getX() - (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
-		}
-		if (movement.RightKey()) {
-			entity.setX(entity.getX() + (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
+		for (Entity entity : entities.getEntityList()) {
+			if (entity.isPlayer()) {
+				if (movement.LeftKey()) {
+					entity.setPosX(entity.getPosX() - (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
+				}
+				if (movement.RightKey()) {
+					entity.setPosX(entity.getPosX() + (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
+				}
+			}
+
 		}
 	}
 }

@@ -1,98 +1,87 @@
 package EntityManager;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public abstract class Entity implements iMovable{
+public abstract class Entity implements iMovable {
 
 	private float posX, posY, speed;
 	private Color colour;
-	
+	private boolean isPlayer; // check if entity is player
+
 	abstract void update();
-	
+
 	// default constructor
-	public Entity ()
-	{
-		
+	public Entity() {
+
 	}
-	
+
 	// parameterized constructor
-	public Entity(float posX, float posY, float speed)
-	{
+	public Entity(float posX, float posY, float speed, boolean isPlayer) {
 		this.posX = posX;
 		this.posY = posY;
 		this.speed = speed;
+		this.isPlayer = isPlayer;
 	}
-	
-	public Entity(float posX, float posY, float speed, Color colour)
-	{
+
+	public Entity(float posX, float posY, float speed, Color colour, boolean isPlayer) {
 		this.posX = posX;
 		this.posY = posY;
 		this.speed = speed;
 		this.colour = colour;
+		this.isPlayer = isPlayer;
 	}
-	
-	public float getPosX () 
-	{
+
+	public float getPosX() {
 		return posX;
 	}
-	
-	public float getPosY () 
-	{
+
+	public float getPosY() {
 		return posY;
 	}
-	
-	public float getSpeed()
-	{
+
+	public float getSpeed() {
 		return speed;
 	}
-	
-	public Color getColour()
-	{
+
+	public Color getColour() {
 		return colour;
 	}
-	
-	void setPosX (float x)
-	{
-		 posX = x;
+
+	public void setPosX(float x) {
+		posX = x;
 	}
-	
-	void setPosY (float y)
-	{
+
+	public void setPosY(float y) {
 		posY = y;
 	}
-	
-	void setSpeed (int s)
-	{
+
+	public void setSpeed(int s) {
 		speed = s;
 	}
-	
-	public void setColour(Color colour)
-	{
+
+	public void setColour(Color colour) {
 		this.colour = colour;
 	}
-	
-	public void draw(ShapeRenderer shape)
-	{
-		
+
+	public void draw(ShapeRenderer shape) {
+
 	}
-	
-	public void draw(SpriteBatch batch)
-	{
-		
+
+	public void draw(SpriteBatch batch) {
+
 	}
-	
-	public void movement()
-	{
-		
+
+	public void movement() {
+
 	}
-	
-	public void dispose(SpriteBatch batch)
-	{
-		
+
+	public void dispose(SpriteBatch batch) {
+
+	}
+
+	public boolean isPlayer() {
+		return isPlayer;
 	}
 }
-
-
