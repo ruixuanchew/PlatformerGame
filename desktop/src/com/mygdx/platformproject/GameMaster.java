@@ -4,7 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import CollisionManager.CollisionManager;
 import EntityManager.Circle;
+import EntityManager.Entity;
 import EntityManager.EntityManager;
 import inputOutputManager.InputOutputManager;
 import playerController.PlayerControllerManager;
@@ -18,7 +20,10 @@ public class GameMaster extends Game {
 	private ShapeRenderer shape;
 	private EntityManager em;
 	private SimulationLifecycleManager slManager;
-
+	
+	private CollisionManager cManager;
+	private Circle player;
+	
 	@Override
 	public void create() {
 		// Initialize the InputOutputManager
@@ -28,9 +33,15 @@ public class GameMaster extends Game {
 		em = new EntityManager();
 
 		// add the entities into an array
-		em.add(new Circle(30, 30, 50, 200, Color.BLUE, true)); // Player
-		em.add(new Circle(30, 90, 50, 20, Color.GREEN, false)); // Entity
+		player = new Circle(30, 100, 150, 200, Color.RED, true);
+		em.add(player); // Player
+		Circle entity = new Circle(30, 150, 150, 20, Color.GREEN, false);
+		em.add(entity); // Entity
 
+		//add entities to collidable list
+		em.addCollidableEntity(entity);
+		cManager = new CollisionManager();
+		
 		// Initialize the PlayerControllerManager
 		pcManager = new PlayerControllerManager(em);
 		
@@ -54,6 +65,9 @@ public class GameMaster extends Game {
 //
 //		em.draw(shape);
 //		shape.end();
+		for (Circle e: em.getCollidableEntityList()) {
+			cManager.checkCollision(player, e);
+		}
 
 		pcManager.move();
 	}

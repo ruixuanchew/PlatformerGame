@@ -8,9 +8,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class EntityManager {
 	private List<Entity> entityList;
+	private List<Circle> collidableEntityList;
 
 	public EntityManager() {
 		entityList = new ArrayList<>();
+		collidableEntityList = new ArrayList<>();
 	}
 
 	public void add(Entity entity) {
@@ -43,6 +45,14 @@ public class EntityManager {
 		for (Entity entity : entityList) {
 			entity.dispose(batch);
 		}
+	}
+
+	public List<Circle> getCollidableEntityList() {
+		return collidableEntityList;
+	}
+
+	public void addCollidableEntity(Circle entity) {
+		this.collidableEntityList.add(entity);
 	}
 
 }

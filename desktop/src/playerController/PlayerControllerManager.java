@@ -25,6 +25,12 @@ public class PlayerControllerManager {
 				if (movement.RightKey()) {
 					entity.setPosX(entity.getPosX() + (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
 				}
+				if (movement.DownKey()) {
+					entity.setPosY(entity.getPosY() - (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
+				}
+				if (movement.UpKey()) {
+					entity.setPosY(entity.getPosY() + (entity.getSpeed() * Gdx.graphics.getDeltaTime()));
+				}
 			}
 
 		}
