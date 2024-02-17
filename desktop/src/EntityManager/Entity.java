@@ -3,12 +3,14 @@ package EntityManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 
 public abstract class Entity implements iMovable {
 
 	private float posX, posY, speed;
 	private Color colour;
 	private boolean isPlayer; // check if entity is player
+	private Vector2 velocity; // to determine where the entity is currently located on the screen
 
 	abstract void update();
 
@@ -31,6 +33,15 @@ public abstract class Entity implements iMovable {
 		this.speed = speed;
 		this.colour = colour;
 		this.isPlayer = isPlayer;
+	}
+
+	public Entity(float posX, float posY, float speed, Color colour, boolean isPlayer, Vector2 velocity) {
+		this.posX = posX;
+		this.posY = posY;
+		this.speed = speed;
+		this.colour = colour;
+		this.isPlayer = isPlayer;
+		this.velocity = velocity;
 	}
 
 	public float getPosX() {
@@ -63,6 +74,14 @@ public abstract class Entity implements iMovable {
 
 	public void setColour(Color colour) {
 		this.colour = colour;
+	}
+
+	public Vector2 getVelocity() {
+		return velocity;
+	}
+
+	public void setVelocity(Vector2 velocity) {
+		this.velocity = velocity;
 	}
 
 	public void draw(ShapeRenderer shape) {

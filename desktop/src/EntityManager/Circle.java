@@ -2,6 +2,7 @@ package EntityManager;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 
 public class Circle extends Entity {
 	private float radius;
@@ -14,6 +15,11 @@ public class Circle extends Entity {
 	// parameterized
 	public Circle(float radius, float posX, float posY, float speed, Color colour, boolean isPlayer) {
 		super(posX, posY, speed, colour, isPlayer);
+		this.radius = radius;
+	}
+
+	public Circle(float radius, float posX, float posY, float speed, Color colour, boolean isPlayer, Vector2 velocity) {
+		super(posX, posY, speed, colour, isPlayer, velocity);
 		this.radius = radius;
 	}
 
