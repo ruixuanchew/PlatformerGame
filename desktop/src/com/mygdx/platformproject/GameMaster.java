@@ -9,6 +9,7 @@ import EntityManager.EntityManager;
 import inputOutputManager.InputOutputManager;
 import playerController.PlayerControllerManager;
 import sceneManager.SceneManager;
+import simulationLifecycleManager.SimulationLifecycleManager;
 
 public class GameMaster extends Game {
 	private InputOutputManager ioManager;
@@ -16,11 +17,14 @@ public class GameMaster extends Game {
 	private PlayerControllerManager pcManager;
 	private ShapeRenderer shape;
 	private EntityManager em;
+	private SimulationLifecycleManager slManager;
 
 	@Override
 	public void create() {
+		// Initialize the InputOutputManager
 		ioManager = new InputOutputManager();
-		shape = new ShapeRenderer();
+
+		// Initialize the EntityManager
 		em = new EntityManager();
 
 		// add the entities into an array
@@ -32,8 +36,11 @@ public class GameMaster extends Game {
 		
 		// Initialize SceneManager with game and entities
 		sceneManager = new SceneManager(this, em);
+
+		// Initialize SimulationLifecycleManager with SceneManager
+		slManager = new SimulationLifecycleManager(sceneManager);
 		// Start with start scene
-		sceneManager.showStartScene();
+		slManager.startGame();
 
 	}
 

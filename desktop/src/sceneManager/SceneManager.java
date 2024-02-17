@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import EntityManager.EntityManager;
+import simulationLifecycleManager.SimulationLifecycleManager;
 
 public class SceneManager {
 	private Game game;
@@ -11,14 +12,17 @@ public class SceneManager {
 	private GameScene gameScene;
 	private EndScene endScene;
 	private EntityManager entityManager;
+	private SimulationLifecycleManager slManager;
 	
 	public SceneManager(Game game, EntityManager em) {
 		this.game = game;
 		this.entityManager = em;
+		this.slManager = new SimulationLifecycleManager(this);
 		startScene = new StartScene(this);
 		// Game scene accepts entity manager
 		gameScene = new GameScene(this, entityManager);
-		endScene = new EndScene(this);
+		// End scene accepts simulation lifecycle manager
+		endScene = new EndScene(this, slManager);
 	}
 	
 	// sets screen for different scenes
