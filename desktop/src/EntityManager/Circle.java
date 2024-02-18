@@ -62,7 +62,7 @@ public class Circle extends Entity {
 
 	@Override
 	public void moveAIControlled() {
-
+		entityManager.moveEntities();
 	}
 
 	@Override

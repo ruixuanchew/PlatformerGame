@@ -6,13 +6,17 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import AIControlManager.AIControlManager;
+
 public class EntityManager {
 	private List<Entity> entityList;
 	private List<Circle> collidableEntityList;
+	private AIControlManager aiControlManager;
 
 	public EntityManager() {
 		entityList = new ArrayList<>();
 		collidableEntityList = new ArrayList<>();
+		aiControlManager = new AIControlManager(this); 
 	}
 
 	public void add(Entity entity) {
@@ -54,6 +58,10 @@ public class EntityManager {
 
 	public void addCollidableEntity(Circle entity) {
 		this.collidableEntityList.add(entity);
+	}
+	
+	public void moveEntities() {
+		aiControlManager.aiMove();
 	}
 
 }

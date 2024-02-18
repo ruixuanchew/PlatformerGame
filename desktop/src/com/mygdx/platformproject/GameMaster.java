@@ -40,7 +40,7 @@ public class GameMaster extends Game {
 		// add the entities into an array
 		player = new Circle(30, 100, 150, 200, Color.CYAN, true, new Vector2(0, 0));
 		em.add(player); // Player
-		Circle entity = new Circle(30, 150, 150, 20, Color.GREEN, false);
+		Circle entity = new Circle(30, 150, 150, 4, Color.GREEN, false);
 		em.add(entity); // Entity
 
 		// add entities to collidable list
@@ -77,6 +77,7 @@ public class GameMaster extends Game {
 		}
 
 		pcManager.update(Gdx.graphics.getDeltaTime());
+		em.moveEntities();
 	}
 
 	@Override
