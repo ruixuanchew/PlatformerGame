@@ -77,7 +77,7 @@ public class GameMaster extends Game {
 		}
 
 		pcManager.update(Gdx.graphics.getDeltaTime());
-		em.moveEntities();
+//		em.moveEntities();
 	}
 
 	@Override
