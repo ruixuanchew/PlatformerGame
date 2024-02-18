@@ -38,7 +38,7 @@ public class GameMaster extends Game {
 		em = new EntityManager();
 
 		// add the entities into an array
-		player = new Circle(30, 100, 150, 200, Color.RED, true, new Vector2(0, 0));
+		player = new Circle(30, 100, 150, 200, Color.CYAN, true, new Vector2(0, 0));
 		em.add(player); // Player
 		Circle entity = new Circle(30, 150, 150, 20, Color.GREEN, false);
 		em.add(entity); // Entity
@@ -47,10 +47,10 @@ public class GameMaster extends Game {
 		em.addCollidableEntity(entity);
 		cManager = new CollisionManager();
 
-		// Initialize the PlayerControllerManager
+		// Initialize the PlayerControllerManager, Jump,
 		pcManager = new PlayerControllerManager(em);
-		movement = new Direction(em);
-		jump = new Jump(em);
+		movement = new Direction(pcManager);
+		jump = new Jump(pcManager);
 
 		// Initialize SceneManager with game and entities
 		sceneManager = new SceneManager(this, em);
@@ -76,12 +76,13 @@ public class GameMaster extends Game {
 			cManager.checkCollision(player, e);
 		}
 
-		pcManager.update(Gdx.graphics.getDeltaTime(), movement, jump);
+		pcManager.update(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override
 	public void dispose() {
 		sceneManager.dispose();
+		pcManager.dispose();
 	}
 
 }

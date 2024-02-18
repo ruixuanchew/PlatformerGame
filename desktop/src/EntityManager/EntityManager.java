@@ -26,6 +26,7 @@ public class EntityManager {
 	public void update() {
 		for (Entity entity : entityList) {
 			entity.update();
+
 		}
 	}
 

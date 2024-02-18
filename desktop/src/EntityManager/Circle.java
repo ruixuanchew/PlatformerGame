@@ -57,7 +57,7 @@ public class Circle extends Entity {
 
 	@Override
 	public void update() {
-		this.moverUserControlled();
+
 	}
 
 	@Override

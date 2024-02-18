@@ -1,34 +1,49 @@
 package playerController;
 
 import EntityManager.Entity;
-import EntityManager.EntityManager;
 
-public class Direction extends PlayerControllerManager {
+public class Direction {
 
-	public Direction(EntityManager em) {
-		super(em);
+	private PlayerControllerManager pcManager;
+
+	public Direction(PlayerControllerManager movement) {
+		// super(em);
+		this.pcManager = movement;
+
 	}
 
-	@Override
 	public void move() {
-		for (Entity entity : getEntities().getEntityList()) {
+		for (Entity entity : pcManager.getEntities().getEntityList()) {
 			if (entity.isPlayer()) {
-				if (getMovement().LeftKey()) {
+				if (pcManager.getMovement().LeftKey()) {
 
-					entity.getVelocity().x = -entity.getSpeed();
+					entity.getVelocity().x = (-entity.getSpeed());
 
-				} else if (getMovement().RightKey()) {
+				} else if (pcManager.getMovement().RightKey()) {
 
 					entity.getVelocity().x = entity.getSpeed();
 
-				} else {
+				} /*
+					 * else if (pcManager.getMovement().DownKey()) {
+					 * 
+					 * entity.getVelocity().y = -entity.getSpeed();
+					 * 
+					 * } else if (pcManager.getMovement().UpKey()) {
+					 * 
+					 * entity.getVelocity().y = entity.getSpeed();
+					 * 
+					 * }
+					 */ else {
+
 					entity.getVelocity().x = 0;
 					// entity.getVelocity().y = 0;
 				}
-
 			}
-
 		}
+	}
+
+	public void dispose() {
+
 	}
 
 }
