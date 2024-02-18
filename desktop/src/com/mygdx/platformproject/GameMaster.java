@@ -15,9 +15,11 @@ import playerController.Jump;
 import playerController.PlayerControllerManager;
 import sceneManager.SceneManager;
 import simulationLifecycleManager.SimulationLifecycleManager;
+import simulationLifecycleManager.ErrorHandler;
 
 public class GameMaster extends Game {
 	private InputOutputManager ioManager;
+	private ErrorHandler errorHandler;
 	private SceneManager sceneManager;
 	private Direction movement;
 	private Jump jump;
@@ -31,8 +33,9 @@ public class GameMaster extends Game {
 
 	@Override
 	public void create() {
-		// Initialize the InputOutputManager
+		// Initialize the InputOutputManager and Error Handler
 		ioManager = new InputOutputManager();
+		errorHandler = new ErrorHandler();
 
 		// Initialize the EntityManager
 		em = new EntityManager();
@@ -58,14 +61,18 @@ public class GameMaster extends Game {
 		// Initialize SimulationLifecycleManager with SceneManager
 		slManager = new SimulationLifecycleManager(sceneManager);
 		// Start with start scene
-		slManager.startGame();
+		try {
+			slManager.startGame();
+		} catch (Exception e) {
+			errorHandler.handleException(e, "Failed to start the game");
+			Gdx.app.exit(); // Exit the game if an error occurs
+		}
 
 	}
 
 	@Override
 	public void render() {
 		super.render();
-		ioManager.Map().render();
 		ioManager.backgroundMusic();
 
 //		shape.begin(ShapeRenderer.ShapeType.Filled); // Add the shape type before drawing the shape

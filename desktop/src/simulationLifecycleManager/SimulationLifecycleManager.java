@@ -1,10 +1,10 @@
 package simulationLifecycleManager;
 
+import com.badlogic.gdx.Gdx;
 import sceneManager.SceneManager;
 
 public class SimulationLifecycleManager {
     private SceneManager sceneManager;
-    private ErrorHandler errorHandler;
 
     public SimulationLifecycleManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
@@ -15,6 +15,6 @@ public class SimulationLifecycleManager {
     }
 
     public void endGame() {
-        System.exit(0);
+        Gdx.app.exit();
     }
 }

@@ -10,6 +10,6 @@ public class SoundPlayer {
         bgMusic = Gdx.audio.newMusic(Gdx.files.internal("Pixelland.mp3"));
         bgMusic.setLooping(true);
         bgMusic.play();
-        bgMusic.setVolume(0.03f);
+        bgMusic.setVolume(0.2f);
     }
 }
