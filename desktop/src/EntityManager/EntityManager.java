@@ -11,12 +11,12 @@ import AIControlManager.AIControlManager;
 public class EntityManager {
 	private List<Entity> entityList;
 	private List<Circle> collidableEntityList;
-//	private AIControlManager aiControlManager;
+	private AIControlManager aiControlManager;
 
 	public EntityManager() {
 		entityList = new ArrayList<>();
 		collidableEntityList = new ArrayList<>();
-//		aiControlManager = new AIControlManager(this); 
+		aiControlManager = new AIControlManager(this); 
 	}
 
 	public void add(Entity entity) {
@@ -61,7 +61,7 @@ public class EntityManager {
 	}
 	
 	public void moveEntities() {
-//		aiControlManager.aiMove();
+		aiControlManager.aiMove();
 	}
 
 }
