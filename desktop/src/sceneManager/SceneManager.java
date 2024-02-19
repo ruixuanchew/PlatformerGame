@@ -13,6 +13,7 @@ public class SceneManager {
 	private EndScene endScene;
 	private EntityManager entityManager;
 	private SimulationLifecycleManager slManager;
+	private boolean gameSceneActive = false;
 	
 	public SceneManager(Game game, EntityManager em) {
 		this.game = game;
@@ -32,10 +33,18 @@ public class SceneManager {
 	}
 	public void showGameScene() {
 		game.setScreen(gameScene);
+		setGameSceneActive(true); // Change game scene boolean based on 
 	}
 	public void showEndScene() {
 		game.setScreen(endScene);
+		setGameSceneActive(false);
 	}
+    public void setGameSceneActive(boolean active) {
+        gameSceneActive = active;
+    }
+    public boolean getGameSceneActive() {
+        return gameSceneActive;
+    }
 	
 	public void dispose() {
         startScene.dispose();

@@ -74,13 +74,14 @@ public class GameMaster extends Game {
 	public void render() {
 		super.render();
 		ioManager.backgroundMusic();
-
-		for (Circle e : em.getCollidableEntityList()) {
-			cManager.checkCollision(player, e);
+		// Check if gameScene is active then call game logic
+		if(sceneManager.getGameSceneActive()) {
+			for (Circle e : em.getCollidableEntityList()) {
+				cManager.checkCollision(player, e);
+			}
+			pcManager.update(Gdx.graphics.getDeltaTime());
+			em.moveEntities();
 		}
-
-		pcManager.update(Gdx.graphics.getDeltaTime());
-		em.moveEntities();
 	}
 
 	@Override
