@@ -12,8 +12,7 @@ public abstract class Entity implements iMovable {
 	private boolean isPlayer; // check if entity is player
 	private Vector2 velocity; // to determine where the entity is currently located on the screen
 	private Vector2 initialPosition; // store initial position of entity
-	EntityManager entityManager = new EntityManager();
-	
+
 	abstract void update();
 
 	// default constructor

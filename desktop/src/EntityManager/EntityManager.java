@@ -16,7 +16,6 @@ public class EntityManager {
 	public EntityManager() {
 		entityList = new ArrayList<>();
 		collidableEntityList = new ArrayList<>();
-		aiControlManager = new AIControlManager(this); 
 	}
 
 	public void add(Entity entity) {
@@ -66,8 +65,7 @@ public class EntityManager {
 		this.collidableEntityList.add(entity);
 	}
 	
-	public void moveEntities() {
-		aiControlManager.aiMove();
-	}
-
+	public void moveAIControlled(AIControlManager aiControlManager) {
+        aiControlManager.moveAIControlled();
+    }
 }

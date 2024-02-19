@@ -2,26 +2,29 @@ package AIControlManager;
 
 import com.badlogic.gdx.Gdx;
 
+
 import EntityManager.Entity;
 import EntityManager.EntityManager;
 
-
-
 public class AIControlManager {
-	private AIMovement aiMovement;
-	private EntityManager entities;
-
+    private EntityManager entityManager;
+	int screenWidth = Gdx.graphics.getWidth();
 	
-    public AIControlManager(EntityManager em) {
-        this.entities = em;
-        this.aiMovement = new AIMovement(em);
+    public AIControlManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
-	public void aiMove() {
-		aiMovement.aiMovement();
-	}
-	
+    public void moveAIControlled() {
+        for (Entity entity : entityManager.getEntityList()) {
+            if (!entity.isPlayer()) {
 
+            	float deltaX = entity.getSpeed();
+	            
+	            entity.setPosX(entity.getPosX() + deltaX);
+	            if (entity.getPosX() <= 0 || entity.getPosX() >= screenWidth) {
+	    			entity.setSpeed(-(int)entity.getSpeed());
+	            }
+	        }
+        }
+    }
 }
-
-

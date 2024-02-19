@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
+import AIControlManager.AIControlManager;
 import CollisionManager.CollisionManager;
 import EntityManager.Circle;
 import EntityManager.EntityManager;
@@ -27,6 +28,7 @@ public class GameMaster extends Game {
 	private ShapeRenderer shape;
 	private EntityManager em;
 	private SimulationLifecycleManager slManager;
+	private AIControlManager aiManager;
 
 	private CollisionManager cManager;
 	private Circle player;
@@ -60,6 +62,10 @@ public class GameMaster extends Game {
 
 		// Initialize SimulationLifecycleManager with SceneManager
 		slManager = new SimulationLifecycleManager(sceneManager, em);
+		
+		// Initialize AIControlManager
+		aiManager = new AIControlManager(em);
+		
 		// Start with start scene
 		try {
 			slManager.startGame();
@@ -80,7 +86,7 @@ public class GameMaster extends Game {
 				cManager.checkCollision(player, e);
 			}
 			pcManager.update(Gdx.graphics.getDeltaTime());
-			em.moveEntities();
+			em.moveAIControlled(aiManager);
 		}
 	}
 
