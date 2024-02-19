@@ -16,13 +16,12 @@ public class EndScene extends BaseScene {
 
         // Define the button actions in a list
         Runnable[] buttonActions = {
-            () -> sceneManager.showStartScene(),
             () -> this.slManager.endGame(),
             () -> this.slManager.restartGame()
         };
 
         // Set the button text in array
-        String[] buttonTexts = {"Back", "Exit", "Restart"};
+        String[] buttonTexts = {"Exit", "Restart"};
 
         // Calculate button width and height
         float buttonWidth = calculateMaxTextWidth(buttonTexts) + 40;
