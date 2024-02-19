@@ -34,6 +34,12 @@ public class EntityManager {
 		}
 	}
 
+	public void resetEntities() {
+		for (Entity entity: entityList) {
+			entity.resetPosition();
+		}
+	}
+
 	public void draw(SpriteBatch batch) {
 		for (Entity entity : entityList) {
 			entity.draw(batch);

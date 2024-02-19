@@ -59,7 +59,7 @@ public class GameMaster extends Game {
 		sceneManager = new SceneManager(this, em);
 
 		// Initialize SimulationLifecycleManager with SceneManager
-		slManager = new SimulationLifecycleManager(sceneManager);
+		slManager = new SimulationLifecycleManager(sceneManager, em);
 		// Start with start scene
 		try {
 			slManager.startGame();
@@ -75,10 +75,6 @@ public class GameMaster extends Game {
 		super.render();
 		ioManager.backgroundMusic();
 
-//		shape.begin(ShapeRenderer.ShapeType.Filled); // Add the shape type before drawing the shape
-//
-//		em.draw(shape);
-//		shape.end();
 		for (Circle e : em.getCollidableEntityList()) {
 			cManager.checkCollision(player, e);
 		}

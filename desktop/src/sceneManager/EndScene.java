@@ -21,6 +21,8 @@ public class EndScene extends BaseScene{
 				() -> sceneManager.showStartScene());
 		addButton("Exit", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2 - 50,
 				() -> this.slManager.endGame());
+		addButton("Restart", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2 - 100,
+				() -> this.slManager.restartGame());
 	}
 
 	@Override

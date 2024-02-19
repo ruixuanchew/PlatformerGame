@@ -11,6 +11,7 @@ public abstract class Entity implements iMovable {
 	private Color colour;
 	private boolean isPlayer; // check if entity is player
 	private Vector2 velocity; // to determine where the entity is currently located on the screen
+	private Vector2 initialPosition; // store initial position of entity
 	EntityManager entityManager = new EntityManager();
 	
 	abstract void update();
@@ -26,6 +27,7 @@ public abstract class Entity implements iMovable {
 		this.posY = posY;
 		this.speed = speed;
 		this.isPlayer = isPlayer;
+		this.initialPosition = new Vector2(posX, posY);
 	}
 
 	public Entity(float posX, float posY, float speed, Color colour, boolean isPlayer) {
@@ -34,6 +36,7 @@ public abstract class Entity implements iMovable {
 		this.speed = speed;
 		this.colour = colour;
 		this.isPlayer = isPlayer;
+		this.initialPosition = new Vector2(posX, posY);
 	}
 
 	public Entity(float posX, float posY, float speed, Color colour, boolean isPlayer, Vector2 velocity) {
@@ -43,6 +46,12 @@ public abstract class Entity implements iMovable {
 		this.colour = colour;
 		this.isPlayer = isPlayer;
 		this.velocity = velocity;
+		this.initialPosition = new Vector2(posX, posY);
+	}
+
+	public void resetPosition() {
+		posX = initialPosition.x;
+		posY = initialPosition.y;
 	}
 
 	public float getPosX() {

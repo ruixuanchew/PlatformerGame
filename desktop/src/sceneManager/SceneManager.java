@@ -17,7 +17,7 @@ public class SceneManager {
 	public SceneManager(Game game, EntityManager em) {
 		this.game = game;
 		this.entityManager = em;
-		this.slManager = new SimulationLifecycleManager(this);
+		this.slManager = new SimulationLifecycleManager(this, entityManager);
 		startScene = new StartScene(this);
 		// Game scene accepts entity manager
 		gameScene = new GameScene(this, entityManager);
