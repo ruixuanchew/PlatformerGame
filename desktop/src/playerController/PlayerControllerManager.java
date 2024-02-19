@@ -1,5 +1,6 @@
 package playerController;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 import EntityManager.Entity;
@@ -13,6 +14,7 @@ public class PlayerControllerManager {
 	private Jump jump;
 
 	private final float GROUND_LEVEL = 150;
+	private int screenWidth = Gdx.graphics.getWidth();
 
 	public PlayerControllerManager(EntityManager em) {
 		this.entities = em; // Initialize the entity variable
@@ -54,7 +56,17 @@ public class PlayerControllerManager {
 				entity.setPosY(entity.getPosY() + entity.getVelocity().y * deltaTime);
 				System.out.println(String.format(ANSI_CYAN + "Player is at %.2f,%.2f position" + ANSI_RESET,
 						entity.getPosX(), entity.getPosY()));
-
+				
+				 // Check if the entity is at the left edge of the screen
+                if (entity.getPosX() <= 1) {
+                    entity.getVelocity().x = 0; // Stop movement
+                    entity.setPosX(0); // Reset position to the edge
+                }
+                if (entity.getPosX() >= screenWidth) {
+                    entity.getVelocity().x = 0; // Stop movement
+                    entity.setPosX(screenWidth); // Reset position to the edge
+                }
+                
 				if (entity.getPosY() <= GROUND_LEVEL) {
 					entity.setPosY(GROUND_LEVEL);
 					entity.setVelocity(new Vector2(entity.getVelocity().x, 0));
