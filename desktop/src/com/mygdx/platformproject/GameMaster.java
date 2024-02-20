@@ -20,7 +20,6 @@ import simulationLifecycleManager.ErrorHandler;
 
 public class GameMaster extends Game {
 	private InputOutputManager ioManager;
-	private ErrorHandler errorHandler;
 	private SceneManager sceneManager;
 	private Direction movement;
 	private Jump jump;
@@ -37,7 +36,6 @@ public class GameMaster extends Game {
 	public void create() {
 		// Initialize the InputOutputManager and Error Handler
 		ioManager = new InputOutputManager();
-		errorHandler = new ErrorHandler();
 
 		// Initialize the EntityManager
 		em = new EntityManager();
@@ -58,7 +56,7 @@ public class GameMaster extends Game {
 		cManager = new CollisionManager();
 
 		// Initialize the PlayerControllerManager, Jump,
-		pcManager = new PlayerControllerManager(em);
+		pcManager = new PlayerControllerManager(em, ioManager);
 		movement = new Direction(pcManager);
 		jump = new Jump(pcManager);
 
@@ -74,9 +72,9 @@ public class GameMaster extends Game {
 		// Start with start scene
 		try {
 			slManager.startGame();
+			// throw new Exception("Test exception"); // testing error handling
 		} catch (Exception e) {
-			errorHandler.handleException(e, "Failed to start the game");
-			Gdx.app.exit(); // Exit the game if an error occurs
+			slManager.getErrorHandler().handleException(e, "Failed to start the game");
 		}
 
 	}
@@ -84,7 +82,7 @@ public class GameMaster extends Game {
 	@Override
 	public void render() {
 		super.render();
-		ioManager.backgroundMusic();
+		ioManager.getBgMusic();
 		// Check if gameScene is active then call game logic
 		if(sceneManager.getGameSceneActive()) {
 			for (TextureObject e : em.getCollidableEntityList()) {

@@ -3,6 +3,10 @@ package inputOutputManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 
+/**
+ * SoundPlayer is used to output the background music for the game.
+ */
+
 public class SoundPlayer {
     private Music bgMusic;
 

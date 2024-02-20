@@ -8,7 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-public class InputHandler {
+/**
+ * InputHandler is used to handle input from the user. It provides methods to check if the left,
+ * right and space keys are pressed. It also provides a method to handle button events.
+ */
+
+public class InputHandler { // check if certain keys are being pressed by the user
     public boolean LeftKey() {
         return Gdx.input.isKeyPressed(Keys.LEFT);
     }

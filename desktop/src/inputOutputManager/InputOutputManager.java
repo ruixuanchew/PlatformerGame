@@ -1,25 +1,25 @@
 package inputOutputManager;
 
+/**
+ * InputOutputManager class is responsible for managing the input and output of the game. It
+ * initializes the sound player and input handler.
+ */
+
 public class InputOutputManager {
-    private Map map;
+
     private SoundPlayer bgMusic;
     private InputHandler inputHandler;
 
     public InputOutputManager() {
-        map = new Map();
         bgMusic = new SoundPlayer();
         inputHandler = new InputHandler();
     }
 
-    public Map Map() {
-        return map;
-    }
-
-    public SoundPlayer backgroundMusic() {
+    public SoundPlayer getBgMusic() {
         return bgMusic;
     }
-    
-    public InputHandler InputHandler() {
+
+    public InputHandler getInputHandler() {
         return inputHandler;
     }
 }

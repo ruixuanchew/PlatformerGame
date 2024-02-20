@@ -23,25 +23,22 @@ public class Direction {
 	public void move() {
 		for (Entity entity : pcManager.getEntities().getEntityList()) {
 			if (entity.isPlayer()) {
-				if (pcManager.getMovement().InputHandler().LeftKey()) {
+				if (pcManager.getMovement().LeftKey()) {
 
 					entity.getVelocity().x = (-entity.getSpeed());
 
-				} else if (pcManager.getMovement().InputHandler().RightKey()) {
-
-					entity.getVelocity().x = entity.getSpeed();
-
-				} /*
-					 * else if (pcManager.getMovement().DownKey()) {
-					 * 
-					 * entity.getVelocity().y = -entity.getSpeed();
-					 * 
-					 * } else if (pcManager.getMovement().UpKey()) {
-					 * 
-					 * entity.getVelocity().y = entity.getSpeed();
-					 * 
-					 * }
-					 */ else {
+				} else /*
+                 * else if (pcManager.getMovement().DownKey()) {
+                 *
+                 * entity.getVelocity().y = -entity.getSpeed();
+                 *
+                 * } else if (pcManager.getMovement().UpKey()) {
+                 *
+                 * entity.getVelocity().y = entity.getSpeed();
+                 *
+                 * }
+                 */ if (pcManager.getMovement().RightKey()) entity.getVelocity().x = entity.getSpeed();
+                else {
 
 					entity.getVelocity().x = 0;
 					// entity.getVelocity().y = 0;

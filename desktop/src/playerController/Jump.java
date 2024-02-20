@@ -27,7 +27,7 @@ public class Jump {
 	public void jump() {
 		for (Entity entity : pcManager.getEntities().getEntityList()) {
 			if (entity.isPlayer()) {
-				if (pcManager.getMovement().InputHandler().SpaceKey() && canJump) {
+				if (pcManager.getMovement().SpaceKey() && canJump) {
 					entity.getVelocity().y += JUMP_VELOCITY; // adjust JUMP VELOCITY
 					canJump = false;
 				}

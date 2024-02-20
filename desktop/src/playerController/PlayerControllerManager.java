@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import EntityManager.Entity;
 import EntityManager.EntityManager;
 import inputOutputManager.InputOutputManager;
+import inputOutputManager.InputHandler;
 
 /**
  * The `PlayerControllerManager` class manages the input and movement of player
@@ -17,7 +18,7 @@ import inputOutputManager.InputOutputManager;
  */
 
 public class PlayerControllerManager {
-	private InputOutputManager ioManager;
+	private InputHandler inputHandler;
 	private EntityManager entities;
 	private Direction direction;
 	private Jump jump;
@@ -25,21 +26,21 @@ public class PlayerControllerManager {
 	private final float GROUND_LEVEL = 150;
 	private int screenWidth = Gdx.graphics.getWidth();
 
-	public PlayerControllerManager(EntityManager em) {
+	public PlayerControllerManager(EntityManager em, InputOutputManager ioManager) {
 		this.entities = em; // Initialize the entity variable
-		ioManager = new InputOutputManager(); // Initialize the variable to take in user input
+		this.inputHandler = ioManager.getInputHandler(); // Initialize the variable to take in user input
 		direction = new Direction(this);
 		jump = new Jump(this);
 
 	}
 
 	// to retrieve user input from methods
-	public InputOutputManager getMovement() {
-		return ioManager;
+	public InputHandler getMovement() {
+		return inputHandler;
 	}
 
-	public void setMovement(InputOutputManager ioManager) {
-		this.ioManager = ioManager;
+	public void setMovement(InputHandler inputHandler) {
+		this.inputHandler = inputHandler;
 	}
 
 	// to retrieve a list of entities from the entity managers
