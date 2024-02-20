@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import AIControlManager.AIControlManager;
 import CollisionManager.CollisionManager;
-import EntityManager.Circle;
+import EntityManager.TextureObject;
 import EntityManager.EntityManager;
 import inputOutputManager.InputOutputManager;
 import playerController.Direction;
@@ -31,7 +31,7 @@ public class GameMaster extends Game {
 	private AIControlManager aiManager;
 
 	private CollisionManager cManager;
-	private Circle player;
+	private TextureObject player;
 
 	@Override
 	public void create() {
@@ -42,11 +42,16 @@ public class GameMaster extends Game {
 		// Initialize the EntityManager
 		em = new EntityManager();
 
+		// add the players into an array
+		player = new TextureObject("bucket.png",150, 150, 200, true, new Vector2(0, 0));
+		em.add(player); 
+		
 		// add the entities into an array
-		player = new Circle(30, 100, 150, 200, Color.CYAN, true, new Vector2(0, 0));
-		em.add(player); // Player
-		Circle entity = new Circle(30, 150, 150, 4, Color.GREEN, false);
-		em.add(entity); // Entity
+//		Circle entity = new Circle(30, 150, 150, 4, Color.GREEN, false);
+//		em.add(entity); 
+
+		TextureObject entity = new TextureObject("droplet.png",150, 150, 4, false);
+		em.add(entity); 
 
 		// add entities to collidable list
 		em.addCollidableEntity(entity);
@@ -82,7 +87,7 @@ public class GameMaster extends Game {
 		ioManager.backgroundMusic();
 		// Check if gameScene is active then call game logic
 		if(sceneManager.getGameSceneActive()) {
-			for (Circle e : em.getCollidableEntityList()) {
+			for (TextureObject e : em.getCollidableEntityList()) {
 				cManager.checkCollision(player, e);
 			}
 			pcManager.update(Gdx.graphics.getDeltaTime());

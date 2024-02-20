@@ -2,6 +2,7 @@ package sceneManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import EntityManager.EntityManager;
@@ -9,6 +10,7 @@ import EntityManager.EntityManager;
 
 public class GameScene extends BaseScene {    
     private EntityManager entityManager;
+	private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
 
     protected GameScene(SceneManager sceneManager, EntityManager entities) {
@@ -32,12 +34,12 @@ public class GameScene extends BaseScene {
         super.render(delta);
         
         // Draw the entities based in game scene
-        ShapeRenderer shapeRenderer = new ShapeRenderer();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        SpriteBatch batch = new SpriteBatch();
+        batch.begin();
         
         // call method draw from entityManager
-        entityManager.draw(shapeRenderer);
+        entityManager.draw(batch);
         
-        shapeRenderer.end();
+        batch.end();
     }
 }

@@ -1,6 +1,6 @@
 package CollisionManager;
 
-import EntityManager.Circle;
+import EntityManager.Entity;
 
 public class CollisionManager {
 
@@ -8,25 +8,31 @@ public class CollisionManager {
 
 	}
 
-	public void checkCollision(Circle player, Circle entity) {
+	public void checkCollision(Entity player, Entity entity) {
 		float playerX = player.getPosX();
 		float playerY = player.getPosY();
-		float playerRadius = player.getRadius();
+		float playerWidth = player.getWidth();
+		float playerHeight = player.getHeight();
 
 		float entityX = entity.getPosX();
 		float entityY = entity.getPosY();
-		float entityRadius = entity.getRadius();
+		float entityWidth = entity.getWidth();
+		float entityHeight = entity.getHeight();
 
 		// find dist between player & entity
-		float distX = Math.abs(playerX) - Math.abs(entityX);
-		float distY = Math.abs(playerY) - Math.abs(entityY);
+		float distX = Math.abs(playerX - entityX);
+		float distY = Math.abs(playerY - entityY);
 		double distance = Math.sqrt((distX * distX) + (distY * distY));
-		if (distance <= (playerRadius + entityRadius)) {
-			handleCollision(player, entity);
-		}
+		
+		if (playerX < entityX + entityWidth &&
+		        playerX + playerWidth > entityX &&
+		        playerY < entityY + entityHeight &&
+		        playerY + playerHeight > entityY) {
+		        handleCollision(player, entity);
+		    }
 	}
 
-	private void handleCollision(Circle player, Circle entity) {
+	private void handleCollision(Entity player, Entity entity) {
 		if (player.getPosX() > entity.getPosX()) {
 			player.setPosX(player.getPosX() + 5);
 		} else if (player.getPosX() < entity.getPosX()) {

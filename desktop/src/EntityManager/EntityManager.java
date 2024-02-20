@@ -10,7 +10,7 @@ import AIControlManager.AIControlManager;
 
 public class EntityManager {
 	private List<Entity> entityList;
-	private List<Circle> collidableEntityList;
+	private List<TextureObject> collidableEntityList;
 	private AIControlManager aiControlManager;
 
 	public EntityManager() {
@@ -57,11 +57,11 @@ public class EntityManager {
 		}
 	}
 
-	public List<Circle> getCollidableEntityList() {
+	public List<TextureObject> getCollidableEntityList() {
 		return collidableEntityList;
 	}
 
-	public void addCollidableEntity(Circle entity) {
+	public void addCollidableEntity(TextureObject entity) {
 		this.collidableEntityList.add(entity);
 	}
 	

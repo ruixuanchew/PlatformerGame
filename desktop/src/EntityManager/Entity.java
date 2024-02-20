@@ -14,6 +14,8 @@ public abstract class Entity implements iMovable {
 	private Vector2 initialPosition; // store initial position of entity
 
 	abstract void update();
+	public abstract float getWidth();
+	public abstract float getHeight();
 
 	// default constructor
 	public Entity() {
@@ -28,26 +30,16 @@ public abstract class Entity implements iMovable {
 		this.isPlayer = isPlayer;
 		this.initialPosition = new Vector2(posX, posY);
 	}
-
-	public Entity(float posX, float posY, float speed, Color colour, boolean isPlayer) {
+	
+	public Entity(float posX, float posY, float speed, boolean isPlayer, Vector2 velocity) {
 		this.posX = posX;
 		this.posY = posY;
 		this.speed = speed;
-		this.colour = colour;
-		this.isPlayer = isPlayer;
-		this.initialPosition = new Vector2(posX, posY);
-	}
-
-	public Entity(float posX, float posY, float speed, Color colour, boolean isPlayer, Vector2 velocity) {
-		this.posX = posX;
-		this.posY = posY;
-		this.speed = speed;
-		this.colour = colour;
 		this.isPlayer = isPlayer;
 		this.velocity = velocity;
 		this.initialPosition = new Vector2(posX, posY);
 	}
-
+	
 	public void resetPosition() {
 		posX = initialPosition.x;
 		posY = initialPosition.y;
@@ -112,4 +104,6 @@ public abstract class Entity implements iMovable {
 	public boolean isPlayer() {
 		return isPlayer;
 	}
+
+
 }

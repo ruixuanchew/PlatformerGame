@@ -21,7 +21,7 @@ public class AIControlManager {
             	float deltaX = entity.getSpeed();
 	            
 	            entity.setPosX(entity.getPosX() + deltaX);
-	            if (entity.getPosX() <= 0 || entity.getPosX() >= screenWidth) {
+	            if (entity.getPosX() <= 0 || entity.getPosX() >= screenWidth - entity.getWidth()) {
 	    			entity.setSpeed(-(int)entity.getSpeed());
 	            }
 	        }
