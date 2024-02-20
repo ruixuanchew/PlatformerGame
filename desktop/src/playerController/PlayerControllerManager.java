@@ -5,10 +5,19 @@ import com.badlogic.gdx.math.Vector2;
 
 import EntityManager.Entity;
 import EntityManager.EntityManager;
-import inputOutputManager.InputHandler;
+import inputOutputManager.InputOutputManager;
+
+/**
+ * The `PlayerControllerManager` class manages the input and movement of player
+ * entities in a game. It uses an `InputOutputManager` instance to get the input
+ * from the keyboard and game controllers, and a `Direction` and `Jump` instance
+ * to manage the movement and jumping behavior of the player entities. It also
+ * checks if the player entities are on the ground, and resets their position if
+ * they fall below the ground level.
+ */
 
 public class PlayerControllerManager {
-	private InputHandler movement;
+	private InputOutputManager ioManager;
 	private EntityManager entities;
 	private Direction direction;
 	private Jump jump;
@@ -18,20 +27,22 @@ public class PlayerControllerManager {
 
 	public PlayerControllerManager(EntityManager em) {
 		this.entities = em; // Initialize the entity variable
-		movement = new InputHandler(); // Initialize the movement variable
+		ioManager = new InputOutputManager(); // Initialize the variable to take in user input
 		direction = new Direction(this);
 		jump = new Jump(this);
 
 	}
 
-	public InputHandler getMovement() {
-		return movement;
+	// to retrieve user input from methods
+	public InputOutputManager getMovement() {
+		return ioManager;
 	}
 
-	public void setMovement(InputHandler movement) {
-		this.movement = movement;
+	public void setMovement(InputOutputManager ioManager) {
+		this.ioManager = ioManager;
 	}
 
+	// to retrieve a list of entities from the entity managers
 	public EntityManager getEntities() {
 		return entities;
 	}
@@ -56,17 +67,17 @@ public class PlayerControllerManager {
 				entity.setPosY(entity.getPosY() + entity.getVelocity().y * deltaTime);
 				System.out.println(String.format(ANSI_CYAN + "Player is at %.2f,%.2f position" + ANSI_RESET,
 						entity.getPosX(), entity.getPosY()));
-				
-				 // Check if the entity is at the left edge of the screen
-                if (entity.getPosX() <= 1) {
-                    entity.getVelocity().x = 0; // Stop movement
-                    entity.setPosX(0); // Reset position to the edge
-                }
-                if (entity.getPosX() >= screenWidth) {
-                    entity.getVelocity().x = 0; // Stop movement
-                    entity.setPosX(screenWidth); // Reset position to the edge
-                }
-                
+
+				// Check if the entity is at the left edge of the screen
+				if (entity.getPosX() <= 1) {
+					entity.getVelocity().x = 0; // Stop movement
+					entity.setPosX(0); // Reset position to the edge
+				}
+				if (entity.getPosX() >= screenWidth) {
+					entity.getVelocity().x = 0; // Stop movement
+					entity.setPosX(screenWidth); // Reset position to the edge
+				}
+
 				if (entity.getPosY() <= GROUND_LEVEL) {
 					entity.setPosY(GROUND_LEVEL);
 					entity.setVelocity(new Vector2(entity.getVelocity().x, 0));

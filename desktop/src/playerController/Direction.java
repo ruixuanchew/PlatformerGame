@@ -2,6 +2,12 @@ package playerController;
 
 import EntityManager.Entity;
 
+/**
+ * The `Direction` class manages the movement of player entities in a game. It
+ * uses a `PlayerControllerManager` instance to get the list of player entities,
+ * and updates their velocity based on the input from the keyboard.
+ */
+
 public class Direction {
 
 	private PlayerControllerManager pcManager;
@@ -12,14 +18,16 @@ public class Direction {
 
 	}
 
+	// Updates the velocity of the player entities based on the input from the
+	// keyboard.
 	public void move() {
 		for (Entity entity : pcManager.getEntities().getEntityList()) {
 			if (entity.isPlayer()) {
-				if (pcManager.getMovement().LeftKey()) {
+				if (pcManager.getMovement().InputHandler().LeftKey()) {
 
 					entity.getVelocity().x = (-entity.getSpeed());
 
-				} else if (pcManager.getMovement().RightKey()) {
+				} else if (pcManager.getMovement().InputHandler().RightKey()) {
 
 					entity.getVelocity().x = entity.getSpeed();
 
