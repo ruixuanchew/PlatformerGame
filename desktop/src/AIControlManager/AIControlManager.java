@@ -8,7 +8,7 @@ import EntityManager.EntityManager;
 
 public class AIControlManager {
     private EntityManager entityManager;
-	int screenWidth = Gdx.graphics.getWidth();
+	private int screenWidth = Gdx.graphics.getWidth();
 	
     public AIControlManager(EntityManager entityManager) {
         this.entityManager = entityManager;
