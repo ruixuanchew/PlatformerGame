@@ -7,11 +7,11 @@ package inputOutputManager;
 
 public class InputOutputManager {
 
-    private SoundPlayer bgMusic;
+    private BackgroundMusic bgMusic;
     private InputHandler inputHandler;
 
     public InputOutputManager() {
-        bgMusic = new SoundPlayer();
+        bgMusic = new BackgroundMusic();
         inputHandler = new InputHandler();
     }
 

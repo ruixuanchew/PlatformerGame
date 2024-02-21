@@ -78,7 +78,8 @@ public class GameMaster extends Game {
 	@Override
 	public void render() {
 		super.render();
-		ioManager.getBgMusic();
+		ioManager.getBgMusic().play();
+		ioManager.getBgMusic().setVolume(0.2f);
 		// Check if gameScene is active then call game logic
 		if(sceneManager.getGameSceneActive()) {
 			for (TextureObject e : em.getCollidableEntityList()) {
