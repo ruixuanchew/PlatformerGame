@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class Entity implements iMovable {
+public abstract class Entity {
 
 	private float posX, posY, speed;
 	private Color colour;

@@ -24,7 +24,6 @@ public class GameMaster extends Game {
 	private Direction movement;
 	private Jump jump;
 	private PlayerControllerManager pcManager;
-	private ShapeRenderer shape;
 	private EntityManager em;
 	private SimulationLifecycleManager slManager;
 	private AIControlManager aiManager;
@@ -45,9 +44,6 @@ public class GameMaster extends Game {
 		em.add(player); 
 		
 		// add the entities into an array
-//		Circle entity = new Circle(30, 150, 150, 4, Color.GREEN, false);
-//		em.add(entity); 
-
 		TextureObject entity = new TextureObject("droplet.png",150, 150, 4, false);
 		em.add(entity); 
 

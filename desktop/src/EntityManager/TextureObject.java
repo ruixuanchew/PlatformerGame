@@ -63,15 +63,4 @@ public class TextureObject extends Entity {
 
 	}
 
-	@Override
-	public void moveAIControlled() {
-		
-	}
-
-	@Override
-	public void moverUserControlled() {
-		this.movement();
-	}
-
-
 }
