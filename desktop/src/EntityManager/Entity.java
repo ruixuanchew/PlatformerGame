@@ -2,7 +2,6 @@ package EntityManager;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Entity {
@@ -57,10 +56,6 @@ public abstract class Entity {
 		return speed;
 	}
 
-	public Color getColour() {
-		return colour;
-	}
-
 	public void setPosX(float x) {
 		posX = x;
 	}
@@ -73,10 +68,6 @@ public abstract class Entity {
 		speed = s;
 	}
 
-	public void setColour(Color colour) {
-		this.colour = colour;
-	}
-
 	public Vector2 getVelocity() {
 		return velocity;
 	}
@@ -85,9 +76,6 @@ public abstract class Entity {
 		this.velocity = velocity;
 	}
 
-	public void draw(ShapeRenderer shape) {
-
-	}
 
 	public void draw(SpriteBatch batch) {
 

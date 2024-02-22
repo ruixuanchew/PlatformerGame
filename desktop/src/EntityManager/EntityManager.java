@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import AIControlManager.AIControlManager;
 
@@ -42,12 +41,6 @@ public class EntityManager {
 	public void draw(SpriteBatch batch) {
 		for (Entity entity : entityList) {
 			entity.draw(batch);
-		}
-	}
-
-	public void draw(ShapeRenderer shape) {
-		for (Entity entity : entityList) {
-			entity.draw(shape);
 		}
 	}
 
