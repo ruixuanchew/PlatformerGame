@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 
 import EntityManager.Entity;
 import EntityManager.EntityManager;
-import inputOutputManager.InputOutputManager;
 import inputOutputManager.InputHandler;
 
 /**
@@ -26,9 +25,9 @@ public class PlayerControllerManager {
 	private final float GROUND_LEVEL = 150;
 	private int screenWidth = Gdx.graphics.getWidth();
 
-	public PlayerControllerManager(EntityManager em, InputOutputManager ioManager) {
+	public PlayerControllerManager(EntityManager em) {
 		this.entities = em; // Initialize the entity variable
-		this.inputHandler = ioManager.getInputHandler(); // Initialize the variable to take in user input
+		this.inputHandler = new InputHandler(); // Initialize the variable to take in user input
 		direction = new Direction(this);
 		jump = new Jump(this);
 

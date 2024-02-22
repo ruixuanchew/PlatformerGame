@@ -16,7 +16,7 @@ public class Jump {
 	private PlayerControllerManager pcManager;
 	private boolean canJump = true;
 	private final float GRAVITY = -150f; // The acceleration due to gravity (in m/s^2)
-	private static final float JUMP_VELOCITY = 160.01f; // JUMP_VELOCITY = sqrt(-2 * GRAVITY * JUMP_HEIGHT) = 160.01f
+	private static final float JUMP_VELOCITY = 180.01f; // JUMP_VELOCITY = sqrt(-2 * GRAVITY * JUMP_HEIGHT) = 160.01f
 
 	public Jump(PlayerControllerManager jump) {
 		this.pcManager = jump;

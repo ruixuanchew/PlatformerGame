@@ -2,21 +2,18 @@ package com.mygdx.platformproject;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 import AIControlManager.AIControlManager;
 import CollisionManager.CollisionManager;
-import EntityManager.TextureObject;
 import EntityManager.EntityManager;
+import EntityManager.TextureObject;
 import inputOutputManager.InputOutputManager;
 import playerController.Direction;
 import playerController.Jump;
 import playerController.PlayerControllerManager;
 import sceneManager.SceneManager;
 import simulationLifecycleManager.SimulationLifecycleManager;
-import simulationLifecycleManager.ErrorHandler;
 
 public class GameMaster extends Game {
 	private InputOutputManager ioManager;
@@ -40,19 +37,19 @@ public class GameMaster extends Game {
 		em = new EntityManager();
 
 		// add the players into an array
-		player = new TextureObject("bucket.png",150, 150, 200, true, new Vector2(0, 0));
-		em.add(player); 
-		
+		player = new TextureObject("bucket.png", 150, 150, 200, true, new Vector2(0, 0));
+		em.add(player);
+
 		// add the entities into an array
-		TextureObject entity = new TextureObject("droplet.png",150, 150, 4, false);
-		em.add(entity); 
+		TextureObject entity = new TextureObject("droplet.png", 150, 150, 4, false);
+		em.add(entity);
 
 		// add entities to collidable list
 		em.addCollidableEntity(entity);
 		cManager = new CollisionManager();
 
 		// Initialize the PlayerControllerManager, Jump,
-		pcManager = new PlayerControllerManager(em, ioManager);
+		pcManager = new PlayerControllerManager(em);
 		movement = new Direction(pcManager);
 		jump = new Jump(pcManager);
 
@@ -61,10 +58,10 @@ public class GameMaster extends Game {
 
 		// Initialize SimulationLifecycleManager with SceneManager
 		slManager = new SimulationLifecycleManager(sceneManager, em);
-		
+
 		// Initialize AIControlManager
 		aiManager = new AIControlManager(em);
-		
+
 		// Start with start scene
 		try {
 			slManager.startGame();
@@ -81,7 +78,7 @@ public class GameMaster extends Game {
 		ioManager.getBgMusic().play();
 		ioManager.getBgMusic().setVolume(0.2f);
 		// Check if gameScene is active then call game logic
-		if(sceneManager.getGameSceneActive()) {
+		if (sceneManager.getGameSceneActive()) {
 			for (TextureObject e : em.getCollidableEntityList()) {
 				cManager.checkCollision(player, e);
 			}
