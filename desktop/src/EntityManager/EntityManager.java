@@ -10,7 +10,6 @@ import AIControlManager.AIControlManager;
 public class EntityManager {
 	private List<Entity> entityList;
 	private List<TextureObject> collidableEntityList;
-	private AIControlManager aiControlManager;
 
 	public EntityManager() {
 		entityList = new ArrayList<>();
